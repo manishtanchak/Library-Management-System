@@ -6,7 +6,7 @@ public class TestLibrary {
 
     @Test 
     public void testAddBook(){
-        Book book = new Book("101" , "Clean Code: A Handbook of Agile Software Craftsmanship" , "Robert C. Martin" , 2008)
+        Book book = new Book("101" , "Clean Code: A Handbook of Agile Software Craftsmanship" , "Robert C. Martin" , 2008);
 
         library.addBook(book);
     }
