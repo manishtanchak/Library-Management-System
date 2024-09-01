@@ -40,5 +40,14 @@ public class Library {
 
     public void returnBook(String isbn){
         Book book = books.get(isbn);
+
+        if( book == null){
+            throw new IllegalStateException("Book Not Found.");
+        }
+        if( !book.isBorrowed()){
+            throw new IllegalStateException("Book is not borrowed.");
+        }
+
+        book.returnBook();
     }
 }   

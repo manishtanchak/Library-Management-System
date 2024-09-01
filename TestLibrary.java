@@ -121,12 +121,27 @@ public class TestLibrary {
         Exception exception = assertThrows(IllegalStateException.class , ()->{
             library.returnBook("101");     
         });
+        String expectedMessage = "Book Not Found." ;
+        String actualMessage = exception.getMessage();
         
         // Assert 
+        assertEquals(expectedMessage, actualMessage);
     }
 
     @Test 
     public void testReturnBookNotBorrowed(){
-        
+        // Book 
+        Book book = new Book("101", "Clean Agile: Back to Basics", "Robert Martin", 2019);
+        library.addBook(book);
+
+        // Act
+        Exception exception = assertThrows(IllegalStateException.class , () -> {
+            library.returnBook("101");
+        });
+        String expectedMessage = "Book is not borrowed." ;
+        String actualMessage = exception.getMessage();
+
+        // Assert
+        assertEquals(expectedMessage, actualMessage);
     }
 }
