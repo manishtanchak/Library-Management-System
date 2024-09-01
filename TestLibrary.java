@@ -99,4 +99,34 @@ public class TestLibrary {
         assertEquals(expectedMessage, actualMessage);
     }
 
+    
+    @Test
+    public void testReturnSuccessfully(){
+        // Book 
+        Book book = new Book("101", "How Google Tests Software", "James Whittaker & Jason Arbon & Jeff Carollo", 2012);
+        library.addBook(book);
+        library.borrowBook("101");
+
+        // Act
+        library.returnBook("101");
+
+        // Assert 
+        assertEquals(1, library.viewAvailableBooks().size());
+        assertFalse(book.isBorrowed());
+    } 
+
+    @Test
+    public void testReturnBookNotFound(){
+        // Act
+        Exception exception = assertThrows(IllegalStateException.class , ()->{
+            library.returnBook("101");     
+        });
+        
+        // Assert 
+    }
+
+    @Test 
+    public void testReturnBookNotBorrowed(){
+        
+    }
 }

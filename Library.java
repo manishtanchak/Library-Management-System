@@ -38,4 +38,7 @@ public class Library {
         return availableBook ;
     }
 
-}
+    public void returnBook(String isbn){
+        Book book = books.get(isbn);
+    }
+}   
