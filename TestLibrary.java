@@ -1,4 +1,7 @@
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.Map;
+
 import org.junit.jupiter.api.Test;
 
 public class TestLibrary {
@@ -148,6 +151,20 @@ public class TestLibrary {
 
     @Test
     public void testViewAvailableBooks(){
-        
+        // book
+        Book book1 = new Book("201", "Refactoring: Improving the Design of Existing Code", "Martin Folwer", 2018);
+        Book book2 = new Book("202", "Monolith to Microservices", "Sam Newman", 2019);
+
+        library.addBook(book1);
+        library.addBook(book2);
+        library.borrowBook(book1.getIsbn());
+
+        // Act 
+        Map<String , Book> availableBooks = library.viewAvailableBooks();
+
+        // Assert
+        assertEquals(1, availableBooks.size());
+        assertTrue(availableBooks.containsKey("202"));
+        assertFalse(availableBooks.containsKey("101"));
     }
 }
