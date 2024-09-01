@@ -144,4 +144,10 @@ public class TestLibrary {
         // Assert
         assertEquals(expectedMessage, actualMessage);
     }
+
+
+    @Test
+    public void testViewAvailableBooks(){
+        
+    }
 }
